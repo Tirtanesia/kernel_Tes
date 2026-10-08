@@ -21,9 +21,11 @@ jobs:
           
       - name: Upstream ke Linux Stable 4.19 New
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
           git remote add stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
           git fetch stable
-          git merge stable/linux-4.19.y --allow-unrelated-histories -m "Upstream Linux 4.19 New
+          git merge stable/linux-4.19.y --allow-unrelated-histories -m Upstream-Linux-4.19
           
       - name: Set up build environment
         run: |
@@ -34,8 +36,6 @@ jobs:
             libzstd-dev linux-modules-extra-$(uname -r) lld protobuf-compiler webp \
             curl xxd patchelf flex bison libarchive-tools build-essential pcre2-utils
           sudo modprobe erofs f2fs
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Free disk space
         run: |
