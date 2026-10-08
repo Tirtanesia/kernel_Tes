@@ -18,7 +18,13 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-
+          
+      - name: Upstream ke Linux Stable 4.19 New
+        run: |
+          git remote add stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+          git fetch stable
+          git merge stable/linux-4.19.y --allow-unrelated-histories -m "Upstream Linux 4.19 New
+          
       - name: Set up build environment
         run: |
           sudo apt update
